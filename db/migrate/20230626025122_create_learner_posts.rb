@@ -4,8 +4,7 @@ class CreateLearnerPosts < ActiveRecord::Migration[7.0]
       t.integer :learner_id
       t.string :summary
       t.string :date
-      t.string :string
-
+    
       t.timestamps
     end
   end

@@ -18,7 +18,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_025358) do
     t.integer "learner_id"
     t.string "summary"
     t.string "date"
-    t.string "string"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,8 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_025358) do
 
   create_table "tutor_reviews", force: :cascade do |t|
     t.integer "learner_to_tutor_id"
-    t.string "rating"
-    t.string "integer"
+    t.integer "rating"
     t.string "review_summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

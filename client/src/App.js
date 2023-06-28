@@ -4,6 +4,7 @@ import React, {useState, useEffect} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignupForm from './SignupForm';
 import { UserProvider } from './context/user';
+import NavBar from './context/NavBar';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,27 +16,24 @@ function App() {
   }, []);
 
   return (
-    <>
-    <UserProvider>
-    <SignupForm/>
-     <h1>Page Count: {count}</h1>
-     </UserProvider>
-     </>
-    // <BrowserRouter>
-    // <div className="App">
-    //   <Switch>
-    //     <Route path="/testing">
-    //       <h1>Test Route</h1>
-    //     </Route>
-    //     <Route path="/">
-    //      
-    //     </Route>
-    //     <Route path="/signup">
-    //       <SignupForm/>
-    //     </Route>
-    //   </Switch>
-    // </div>
-    // </BrowserRouter>
+    <div className='App'>
+      <UserProvider>
+        <NavBar/>
+        <BrowserRouter>  
+          <Switch>
+          <Route exact path = "/">
+            <h1>Page Count: {count}</h1>
+          </Route>
+          <Route exact path="/signup" >
+            <SignupForm/>
+          </Route>
+
+          </Switch>
+          
+        </BrowserRouter>
+      </UserProvider>
+     </div>
+   
   );
 }
 

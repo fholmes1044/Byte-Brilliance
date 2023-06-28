@@ -12,14 +12,12 @@ function SignupForm (){
     const [learningGoals, setLearningGoals] = useState("")
     const [age, setAge] = useState("")
     const [location, setLocation] = useState("")
-    
-    // const {errors, setErrors} = useContext(UserContext)
+    const {errors, setErrors} = useContext(UserContext)
     const { signup } = useContext(UserContext)
     const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         fetch("/signup", {
             method: "POST", 
             headers: {
@@ -35,7 +33,6 @@ function SignupForm (){
               learning_goals: learningGoals,
               age: age,
               location: location
-              
             })
           })
           .then(res => res.json())
@@ -54,8 +51,8 @@ function SignupForm (){
               setAge("")
               setLocation("")
               
-            //   const errorLis = user.errors.map(error => <li>{error}</li> )
-            //   setErrors(errorLis)
+              const errorLis = user.errors.map(error => <li>{error}</li> )
+              setErrors(errorLis)
             }
         })
     };
@@ -71,6 +68,7 @@ function SignupForm (){
                     value={username}
                     onChange= {(e) => setUsername(e.target.value)}
                     /><br/>
+
                 <label>Password: </label>
                 <input
                     type="password"
@@ -79,7 +77,6 @@ function SignupForm (){
                     onChange = {(e) => setPassword(e.target.value)}
                 /><br/>
 
-                <input type="submit"/>
                 <label>Password Confirmation:</label>
                 <input
                     type="password"
@@ -133,9 +130,11 @@ function SignupForm (){
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                 /><br/>
+
+                <input type="submit"/>
             </form>
             <ul>
-                {/* {errors} */}
+                {errors}
             </ul>
         </div>
     )

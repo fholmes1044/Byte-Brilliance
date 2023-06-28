@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignupForm from './SignupForm';
 import { UserProvider } from './context/user';
 import NavBar from './context/NavBar';
+import LoginForm from './LoginForm';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route exact path="/signup" >
             <SignupForm/>
+          </Route>
+          <Route exact path="/login" >
+            <LoginForm/>
           </Route>
 
           </Switch>

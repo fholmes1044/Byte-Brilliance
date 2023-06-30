@@ -4,7 +4,7 @@ class LearnersController < ApplicationController
     def create
         learner_user = Learner.create(learner_params)
             if learner_user.valid?
-                byebug
+               
                 session[:learner_id] = learner_user.id
               render json: learner_user, status: :created
             else

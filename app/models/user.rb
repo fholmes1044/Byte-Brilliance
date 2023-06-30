@@ -1,7 +1,7 @@
-class Learner < ApplicationRecord
+class User < ApplicationRecord
     has_secure_password
 
-    has_many :posts 
+    has_many :learner_posts 
     has_many :learner_to_tutors
     has_many :tutors, through: :learner_to_tutors
 

@@ -4,7 +4,7 @@ import React, {useState, useEffect} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignupForm from './SignupForm';
 import { UserProvider } from './context/user';
-import NavBar from './context/NavBar';
+import NavBar from './NavBar';
 import LoginForm from './LoginForm';
 
 function App() {

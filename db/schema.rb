@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_26_025358) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_30_151705) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "learner_posts", force: :cascade do |t|
-    t.integer "learner_id"
+    t.integer "user_id"
     t.string "summary"
     t.string "date"
     t.datetime "created_at", null: false
@@ -24,20 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_025358) do
 
   create_table "learner_to_tutors", force: :cascade do |t|
     t.integer "tutor_id"
-    t.integer "learner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "learners", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.string "email"
-    t.string "profile_picture"
-    t.string "full_name"
-    t.string "learning_goals"
-    t.integer "age"
-    t.string "location"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,6 +33,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_025358) do
     t.integer "learner_to_tutor_id"
     t.date "date"
     t.integer "duration"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "table_name", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.string "email"
+    t.string "profile_picture"
+    t.string "full_name"
+    t.string "learning_goals"
+    t.integer "age"
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -67,6 +67,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_025358) do
     t.string "location"
     t.string "subject"
     t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.string "email"
+    t.string "profile_picture"
+    t.string "full_name"
+    t.string "learning_goals"
+    t.integer "age"
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

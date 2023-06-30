@@ -1,5 +1,5 @@
 class LearnerPost < ApplicationRecord
-    belongs_to :learner
+    belongs_to :user
 
-    validates :learner_id, :summary, :date, presence: true
+    validates :user_id, :summary, :date, presence: true
 end

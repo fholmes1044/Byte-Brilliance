@@ -30,9 +30,9 @@ function LoginForm (){
             }else{
                 setUserName("")
                 setPassword("")
-
-                const errorLis = loggedInUser.errors.map(error => <li>{error}</li> )
-              setErrors(errorLis)
+                console.log("er",  loggedInUser.errors)
+            //     const errorLis = loggedInUser.errors.map(error => <li>{error}</li> )
+              setErrors(loggedInUser.errors)
             }
         })
     }
@@ -51,7 +51,7 @@ function LoginForm (){
 
                 <label>Password: </label>
                 <input
-                    type="text"
+                    type="password"
                     id="password"
                     value={password}
                     onChange={ (e) => setPassword(e.target.value)}

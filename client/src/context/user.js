@@ -17,6 +17,7 @@ function UserProvider({ children }) {
         fetch("/me")
             .then(res => res.json())
             .then((data) =>{
+                console.log("data", data)
                 setUser(data)
                 if(data.errors){
                     setErrors(data.errors);
@@ -41,7 +42,7 @@ function UserProvider({ children }) {
 
 
     const logout = () => {
-        history.push("/")
+        // history.push("/")
         setLoggedIn(false);
         setUser(null)  
         setErrors([])
@@ -51,6 +52,7 @@ function UserProvider({ children }) {
     const signup = (user) => {
         setUser(user)
         setLoggedIn(true);
+        console.log("USER CONTEXT", user)
     }
 
     

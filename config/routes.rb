@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
     post "/login", to: "sessions#create"
     delete "logout", to: "sessions#destroy"
-    get '/auth/google_oauth2/callback', to: "sessions#google_auth"
+    
+    get '/auth/google_oauth2/callback', to: "sessions#Google_Auth"
+    get 'auth/failure', to: redirect('/')
     get '*path',
       to: 'fallback#index',
       constraints: ->(req) { !req.xhr? && req.format.html? }

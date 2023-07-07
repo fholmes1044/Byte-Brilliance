@@ -48,11 +48,39 @@ function LoginForm (){
             }
         })
     }
-
     const googleLogIn = useGoogleLogin({
-        onSuccess: tokenResponse => console.log("codeSuccess",tokenResponse),
+        onSuccess: async (tokenResponse) => {
+          const id_token = tokenResponse.tokenId;
+      
+          try {
+            const response = await fetch('/auth/google_oauth2/callback', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: `idtoken=${id_token}`,
+            });
+      
+            if (response.ok) {
+              console.log('Signed in as: ' + response.responseText);
+              // Perform any necessary actions upon successful login
+            } else {
+              console.log('Login failed');
+              // Perform any necessary actions upon failed login
+            }
+          } catch (error) {
+            console.error('An error occurred during login:', error);
+            // Handle the error appropriately
+          }
+        },
         flow: 'auth-code',
       });
+      
+      
+    // const googleLogIn = useGoogleLogin({
+    //     onSuccess: tokenResponse => console.log("codeSuccess",tokenResponse),
+    //     flow: 'auth-code',
+    //   });
 
     //   const hasAllAccess = hasGrantedAllScopesGoogle(
     //     tokenResponse,

@@ -85,3 +85,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+
+# config.action_dispatch.default_headers['Cross-Origin-Opener-Policy'] = 'same-origin'
+config.action_dispatch.default_headers['Cross-Origin-Opener-Policy'] = 'allow-from *'
+

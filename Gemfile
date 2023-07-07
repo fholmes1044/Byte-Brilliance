@@ -46,5 +46,8 @@ group :development do
   gem "spring"
 end
 
+gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'omniauth'
+gem 'dotenv-rails'
 
 gem "active_model_serializers", "~> 0.10.13"

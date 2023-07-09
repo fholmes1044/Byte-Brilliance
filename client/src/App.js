@@ -8,6 +8,7 @@ import NavBar from './NavBar';
 import LoginForm from './LoginForm';
 import HomePage from './Homepage';
 import AllTutorsDisplay from './AllTutorsDisplay';
+import TutorProfile from './TutorProfile';
 
 
 function App() {
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route exact path="/tutors">
             <AllTutorsDisplay allTutors={allTutors}  />
+          </Route>
+          <Route exact path="/tutors/:tutorId">
+            <TutorProfile/>
           </Route>
           </Switch>
           

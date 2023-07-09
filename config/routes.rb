@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "logout", to: "sessions#destroy"
     get "/tutors", to: "tutors#index"
+    get "/tutors/:tutorId", to: "tutors#show"
     
     get '/auth/google_oauth2/callback', to: "sessions#Google_Auth"
     get 'auth/failure', to: redirect('/')

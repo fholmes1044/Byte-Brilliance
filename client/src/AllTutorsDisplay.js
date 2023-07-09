@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import TutorCard from "./TutorCard";
+import TutorDisplayTile from "./TutorDisplayTile";
 
 function AllTutorsDisplay({allTutors}){
     if (!allTutors || allTutors.length === 0) {
@@ -7,7 +7,7 @@ function AllTutorsDisplay({allTutors}){
       }
     
       const TutorDisplay = allTutors.map((tutor) => (
-        <TutorCard key={tutor.id} tutor={tutor} />
+        <TutorDisplayTile key={tutor.id} tutor={tutor} />
       ));
     
     

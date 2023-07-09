@@ -17,7 +17,7 @@ function UserProvider({ children }) {
         fetch("/me")
             .then(res => res.json())
             .then((data) =>{
-                console.log("data", data)
+                // console.log("data", data)
                 setUser(data)
                 if(data.errors){
                     setErrors(data.errors);

@@ -20,6 +20,8 @@ Bundler.require(*Rails.groups)
 
 module LearnerApp
   class Application < Rails::Application
+    config.action_dispatch.default_headers['Cross-Origin-Opener-Policy'] = 'same-origin-allow-popups'
+    
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
@@ -41,16 +43,16 @@ module LearnerApp
     config.middleware.use ActionDispatch::Session::CookieStore
 
     # Custom middleware to set Cross-Origin-Opener-Policy header
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins "http://localhost:4000" # Set the appropriate origin(s) here or use a more restrictive value
-        resource "*", headers: :any, methods: :any,
-          expose: ["Cross-Origin-Opener-Policy"]
-      end
-    end
+    # config.middleware.insert_before 0, Rack::Cors do
+    #   allow do
+    #     origins "http://localhost:4000" # Set the appropriate origin(s) here or use a more restrictive value
+    #     resource "*", headers: :any, methods: :any,
+    #       expose: ["Cross-Origin-Opener-Policy"]
+    #   end
+    # end
 
     # Use SameSite=Strict for all cookies to help protect against CSRF
-    config.action_dispatch.cookies_same_site_protection = :strict
+    # config.action_dispatch.cookies_same_site_protection = :strict
 
     
   end

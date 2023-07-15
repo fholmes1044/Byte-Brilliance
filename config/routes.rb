@@ -3,17 +3,27 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  mount ActionCable.server => "/cable"
   
     # route to test your configuration
     get '/hello', to: 'application#hello_world'
+    
     get "/me", to: "users#show"
     post "/signup", to: "users#create"
     post "/login", to: "sessions#create"
     delete "logout", to: "sessions#destroy"
+    
     get "/tutors", to: "tutors#index"
     get "/tutors/:tutorId", to: "tutors#show"
     
-    get '/auth/google_oauth2/callback', to: "sessions#Google_Auth"
+    post '/auth/google_oauth2/callback', to: "sessions#google_auth"
+    get '/login', to: 'sessions#new'
+
+    get '/message', to: 'messages#message'
+
+    resources :messages, only: [:index, :create]
+
     get 'auth/failure', to: redirect('/')
     get '*path',
       to: 'fallback#index',

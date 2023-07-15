@@ -4,6 +4,11 @@ import './index.css';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom'
+import actionCable from 'actioncable'
+
+const CableApp = {}
+CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
 
 
 //instead of adding to index.html file adding it here just create a script here
@@ -16,9 +21,11 @@ document.head.appendChild(script);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <GoogleOAuthProvider clientId="825029250438-h983qrk6pdse6hofh9b0j2qu439ninb9.apps.googleusercontent.com">
+  <BrowserRouter>
   <React.StrictMode>
-    <App />
+    <App cable={CableApp.cable} />
   </React.StrictMode>
+  </BrowserRouter>
   </GoogleOAuthProvider>
 );
 

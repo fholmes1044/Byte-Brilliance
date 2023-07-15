@@ -55,6 +55,15 @@ const logoutUser = (e) => {
       >
         My Reviewed Tutors
       </NavLink>
+
+      <NavLink
+       to="/chatdashboard"
+       exact
+       activeClassName="activeLink"
+      className="navbar-link"
+      >
+        Chat Dashboard
+      </NavLink>
       <button onClick={logoutUser}>Sign Out</button>
     </div>
   );

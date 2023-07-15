@@ -32,7 +32,7 @@ return(
     <p><strong>Subject: </strong>{subject}</p>
     <p><strong>Availability: </strong>{availability}</p>
     <p><strong>Experience: </strong>{experience}</p>
-    <button onClick={handleCardClick}> View {name}'s Profile</button>
+    <button onClick={handleCardClick}> View {name}'s Reviews</button>
     </Card>
   </>
 )

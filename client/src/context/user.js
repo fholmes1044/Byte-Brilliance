@@ -3,6 +3,8 @@ import {useHistory, useLocation} from "react-router-dom";
 
 const UserContext = React.createContext();
 
+const ws = new WebSocket("ws://localhost:3000/cable")
+
 function UserProvider({ children }) {
     // const [user, setUser] = useState({events:[]})
     const [user, setUser] = useState({})
@@ -23,8 +25,10 @@ function UserProvider({ children }) {
                     setErrors(data.errors);
                     setUser({});
                     setLoggedIn(false);
+                    
                 }else{
                     setLoggedIn(true)
+                    // console.log("UU", user)
                 }
                 setLoading(false)
             })
@@ -33,6 +37,19 @@ function UserProvider({ children }) {
     // useEffect(() => {
     //     setErrors([])
     // }, [location.pathname])
+
+    ws.onopen = () => {
+        console.log("CONNECTED TO WEBSOCKET", user.id)
+        ws.send(
+          JSON.stringify({
+            command: "subscribe",
+            identifier: JSON.stringify({
+            //   id: user.id,
+              channel: "MessagesChannel"
+            })
+          })
+        )
+      }
 
     const login = (userobj) => {
         setUser(userobj)
@@ -57,7 +74,7 @@ function UserProvider({ children }) {
 
     
     return (
-        <UserContext.Provider value={{user, setUser, login, logout, signup, loggedIn, setLoggedIn, errors, setErrors}}>
+        <UserContext.Provider value={{user, setUser, login, logout, signup, loggedIn, setLoggedIn, errors, setErrors, ws}}>
             {children}
         </UserContext.Provider>
     )

@@ -11,14 +11,14 @@ class SessionsController < ApplicationController
         end 
     end
 
-    def Google_Auth
+    def google_auth
         byebug
         access_token = request.env['omniauth.auth']
         user = User.from_omniauth(access_token)
         session[:user_id] = user.id
         user.google_token = access_token.credentials.token
-        p user
-        user.save
+        # p user
+        # user.save
         # Process the authentication data
         # Find or create the user based on the authentication data
         # Set the user's session

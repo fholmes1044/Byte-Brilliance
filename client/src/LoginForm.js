@@ -8,12 +8,47 @@ import { GoogleLogin, useGoogleLogin, hasGrantedAnyScopeGoogle, hasGrantedAllSco
 function LoginForm (){
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
+    const [userCredential, setUserCredential] = useState('')
     const {errors, setErrors, login} = useContext(UserContext)
     // const { login } = useContext(UserContext)
     const history = useHistory()
 
     const responseMessage = (response) => {
-        console.log("response", response);
+        console.log("response", response)
+
+        setUserCredential(response.credential)
+
+        googleLogIn(response);
+
+        // If we receive a "response" (truthy),
+        // then we can guide the user to the next
+        // authorized page
+
+        // fetch("/login", {
+        //     method: "POST", 
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         // How do we access the appropriate token
+        //         // from "response"?
+
+        //         // response.credential
+        //     })
+        // })
+        // .then((res) => res.json())
+        // .then(loggedInUser => {
+        //     if(!loggedInUser.errors){
+        //         login(loggedInUser)
+        //         history.push('/')
+        //     }else{
+        //         setUserName("")
+        //         setPassword("")
+        //         console.log("er",  loggedInUser.errors)
+        //     //     const errorLis = loggedInUser.errors.map(error => <li>{error}</li> )
+        //       setErrors(loggedInUser.errors)
+        //     }
+        // })
     };
     const errorMessage = (error) => {
         console.log("error",error);
@@ -51,7 +86,7 @@ function LoginForm (){
     const googleLogIn = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
           const id_token = tokenResponse.tokenId;
-      
+
           try {
             const response = await fetch('/auth/google_oauth2/callback', {
               method: 'POST',
@@ -66,6 +101,7 @@ function LoginForm (){
               // Perform any necessary actions upon successful login
             } else {
               console.log('Login failed');
+              console.log(tokenResponse)
               // Perform any necessary actions upon failed login
             }
           } catch (error) {
@@ -118,12 +154,13 @@ function LoginForm (){
             <h2>React Google Login</h2>
             <br />
             <GoogleLogin
+                // Would be best practice to store sensitive information inside Environment Variables
                 clientId="825029250438-h983qrk6pdse6hofh9b0j2qu439ninb9.apps.googleusercontent.com"
                 buttonText="Sign in with Google"
                 onSuccess={responseMessage}
                 onFailure={errorMessage}
                 cookiePolicy="single_host_origin"
-                onClick = {() => googleLogIn}
+                // onClick = {googleLogIn}
             />
             {/* <div id="signInDiv"></div> Render Google login button here */}
             {/* <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /> */}

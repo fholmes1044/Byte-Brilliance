@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     #   end
 
     private 
-    def learner_params
+    def user_params
         params.permit(:username, :password, :password_confirmation, :email, :profile_picture, :full_name, :learning_goals, :age, :location)
     end 
 end

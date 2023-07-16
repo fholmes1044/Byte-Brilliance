@@ -29,6 +29,7 @@ function ChatForm({ addMessage, setIsTyping }){
         }
       }
     return(
+      <div>
         <form onSubmit={ handleSubmit }>
         <input 
           type="text" 
@@ -41,6 +42,7 @@ function ChatForm({ addMessage, setIsTyping }){
         />
         <input type="submit" value="Send" />
       </form>
+      </div>
     )
 }
 

@@ -15,8 +15,23 @@ function ChatDashboard(){
       }, [])
 
       ws.onmessage = e => {
-        console.log(e.data)
-      }
+        const data = JSON.parse(e.data);
+        if (data.type === "ping") return;
+        if(data.type === "welcome") return;
+        if(data.type === "confirm_subscription") return;
+
+        const message = JSON.parse(data.message);
+        setMessages([...messages, message])
+
+       
+        // try {
+        //   const message = JSON.parse(data);
+        //   addMessage(message);
+        // } catch (error) {
+        //   console.error("Error parsing JSON data:", error);
+        // }
+      };
+
       const addMessage = message => {
         setMessages([...messages, message])
       }
@@ -24,8 +39,8 @@ function ChatDashboard(){
     return(
         <div id="container">
             <h3> Chat </h3>
-            <ChatDisplay messages={ messages } user={ user } isTyping={ isTyping }/>
-            <ChatForm addMessage={ addMessage } setIsTyping={ setIsTyping } />
+            <ChatDisplay messages={ messages }  isTyping={ isTyping }/>
+            <ChatForm addMessage={ addMessage} setIsTyping={ setIsTyping } />
         </div>
     )
 }

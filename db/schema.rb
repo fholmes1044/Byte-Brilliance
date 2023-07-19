@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_19_152128) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_19_170253) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_152128) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "tutor_id"
+    t.string "topic"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -86,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_152128) do
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "profile_picture"
   end
 
   create_table "users", force: :cascade do |t|

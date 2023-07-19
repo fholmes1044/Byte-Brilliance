@@ -6,6 +6,13 @@ function AllTutorsDisplay({allTutors}){
         return <p>No tutors available.</p>;
       }
     
+      const tutorListStyle = {
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "20px",
+        justifyContent: "center"
+      };
+
       const TutorDisplay = allTutors.map((tutor) => (
         <TutorDisplayTile key={tutor.id} tutor={tutor} />
       ));
@@ -14,7 +21,7 @@ function AllTutorsDisplay({allTutors}){
     return(
         <>
         <h2>All Tutors</h2>
-        {TutorDisplay}
+        <div style={tutorListStyle}>{TutorDisplay}</div>
         </>
     )
 }

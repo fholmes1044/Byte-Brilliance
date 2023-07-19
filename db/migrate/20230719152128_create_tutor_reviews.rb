@@ -1,9 +1,9 @@
 class CreateTutorReviews < ActiveRecord::Migration[7.0]
   def change
     create_table :tutor_reviews do |t|
-      t.integer :learner_to_tutor_id
-      t.integer :rating
-      t.string :review_summary
+      t.integer :user_id
+      t.integer :tutor_id
+      t.string :summary
 
       t.timestamps
     end

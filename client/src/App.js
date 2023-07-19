@@ -9,12 +9,9 @@ import LoginForm from './LoginForm';
 import HomePage from './Homepage';
 import AllTutorsDisplay from './AllTutorsDisplay';
 import TutorProfile from './TutorProfile';
-import Chat from './Chat';
-import Message from './Message';
 import ChatDashboard from './ChatDashboard';
 import { UserContext } from "./context/user";
 
-// const ws = new WebSocket("ws://localhost:3000/cable")
 function App({cable}) {
   const [allTutors, setAllTutors] = useState("")
   const user = useContext(UserContext)
@@ -25,18 +22,6 @@ function App({cable}) {
       .then((tutorData) => setAllTutors(tutorData));
   }, []);
 
-  // ws.onopen = () => {
-  //   console.log("CONNECTED TO WEBSOCKET", user)
-  //   ws.send(
-  //     JSON.stringify({
-  //       command: "subscribe",
-  //       identifier: JSON.stringify({
-  //         // id: user.id,
-  //         channel: "MessagesChannel"
-  //       })
-  //     })
-  //   )
-  // }
  
   return (
     <div className='App'>
@@ -46,7 +31,6 @@ function App({cable}) {
          <NavBar/>
           <Switch>
           <Route exact path = "/">
-            {/* <h1>Page Count: {count}</h1> */}
             <HomePage/>
           </Route>
           <Route exact path="/signup" >
@@ -59,7 +43,7 @@ function App({cable}) {
             <AllTutorsDisplay allTutors={allTutors}  />
           </Route>
           <Route exact path="/tutors/:tutorId">
-            <TutorProfile/>
+            <TutorProfile allTutors={allTutors}/>
           </Route>
           <Route exact path= "/chatdashboard">
             <ChatDashboard/>

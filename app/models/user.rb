@@ -2,8 +2,9 @@ class User < ApplicationRecord
     has_secure_password
 
     has_many :learner_posts 
-    has_many :learner_to_tutors
-    has_many :tutors, through: :learner_to_tutors
+    has_many :meetings
+    has_many :tutors, through: :meetings
+    has_many :tutor_reviews
     has_many :messages, dependent: :destroy
 
     validates :username, :full_name, :age, :email, :password, :password_confirmation, :learning_goals, :location,  presence: true

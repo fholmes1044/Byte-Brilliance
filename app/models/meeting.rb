@@ -1,5 +1,5 @@
 class Meeting < ApplicationRecord
-    belongs_to :learner_to_tutor
+    has_many :session_reviews
 
-    validates :learner_to_tutor_id, :date, :duration, :location, presence: true
+    validates :date, :duration, :location, presence: true
 end

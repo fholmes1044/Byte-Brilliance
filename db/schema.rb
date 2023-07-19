@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_14_205423) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_19_152128) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,12 +30,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_205423) do
   end
 
   create_table "meetings", force: :cascade do |t|
-    t.integer "learner_to_tutor_id"
     t.date "date"
     t.integer "duration"
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "tutor_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -44,6 +45,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_205423) do
     t.string "content"
     t.integer "user_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "session_reviews", force: :cascade do |t|
+    t.integer "meeting_id"
+    t.integer "rating"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "table_name", force: :cascade do |t|
@@ -60,9 +69,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_205423) do
   end
 
   create_table "tutor_reviews", force: :cascade do |t|
-    t.integer "learner_to_tutor_id"
-    t.integer "rating"
-    t.string "review_summary"
+    t.integer "user_id"
+    t.integer "tutor_id"
+    t.string "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

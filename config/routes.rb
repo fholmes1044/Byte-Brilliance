@@ -22,9 +22,12 @@ Rails.application.routes.draw do
 
     get '/message', to: 'messages#message'
 
-    post '/meetings', to: "meetings#create"
+    # get '/meetings', to: "meetings#index"
+    # post '/meetings', to: "meetings#create"
+    # get "/meetings/id", to
 
     resources :messages, only: [:index, :create]
+    resources :meetings, only: [:index, :create, :show]
 
     get 'auth/failure', to: redirect('/')
     get '*path',

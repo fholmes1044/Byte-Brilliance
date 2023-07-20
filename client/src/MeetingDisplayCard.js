@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 
 function MeetingDisplayCard({meeting}){
-    console.log("m", meeting)
+    console.log("m", meeting.tutor.name)
 
     
     const meetingCardStyle = {
@@ -17,7 +17,7 @@ return(
         <p><strong>Duration: </strong> {meeting.duration}</p>
         <p><strong>Location: </strong> {meeting.location}</p>
         <p><strong>Topic: </strong> {meeting.topic}</p>
-        <p><strong>Tutor Name: </strong> ????</p>
+        <p><strong>Tutor Name: </strong>{meeting.tutor.name} </p>
         {/* add tutor name in serializer on in includes in meeting */}
     </Card>
     </>

@@ -87,5 +87,5 @@ Rails.application.configure do
 end
 
 # config.action_dispatch.default_headers['Cross-Origin-Opener-Policy'] = 'same-origin'
-config.action_dispatch.default_headers['Cross-Origin-Opener-Policy'] = 'allow-from *'
+# config.action_dispatch.default_headers['Cross-Origin-Opener-Policy'] = 'allow-from *'
 

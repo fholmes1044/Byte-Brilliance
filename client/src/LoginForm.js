@@ -100,7 +100,7 @@ function LoginForm (){
               console.log('Signed in as: ' + response.responseText);
               // Perform any necessary actions upon successful login
             } else {
-              console.log('Login failed');
+              console.log('Login failed', response);
               console.log(tokenResponse)
               // Perform any necessary actions upon failed login
             }

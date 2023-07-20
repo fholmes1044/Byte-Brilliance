@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
+  response.headers['Cross-Origin-Opener-Policy'] = 'same-origin'
 
   before_action :authorize
   # def hello_world

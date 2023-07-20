@@ -21,6 +21,7 @@ function AllTutorsDisplay({allTutors}){
     return(
         <>
         <h2>All Tutors</h2>
+        <button>Add a Tutor</button>
         <div style={tutorListStyle}>{TutorDisplay}</div>
         </>
     )

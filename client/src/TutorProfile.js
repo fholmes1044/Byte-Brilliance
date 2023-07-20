@@ -35,7 +35,7 @@ setShowTutorReviewForm(!showTutorReviewForm)
       <h2>Tutor Profile</h2>
       <div>
         <h3>{tutor.name}</h3>
-        <div>{tutor.profile_picture}</div>
+        <div><img src={tutor.profile_picture}/></div>
         <p><strong>Experience:</strong> {tutor.experience}</p>
         <p><strong>Hourly Rate:</strong> {tutor.hourly_rate}</p>
         <p><strong>Subject:</strong> {tutor.subject}</p>

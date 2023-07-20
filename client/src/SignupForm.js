@@ -94,9 +94,10 @@ function SignupForm (){
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 /><br/>
+
                  <label>Profile Picture:</label>
                 <input
-                    type="text"
+                    type="file"
                     id="profilePicture"
                     value={profilePicture}
                     onChange={(e) => setProfilePicture(e.target.value)}

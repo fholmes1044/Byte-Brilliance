@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import NewMeetingForm from "./NewMeetingForm";
+import NewTutorReviewForm from "./NewTutorReviewForm";
 
 
 function TutorProfile(){
     const { tutorId } = useParams();
     const [tutor, setTutor] = useState(null);
-    const [showForm, setShowForm] = useState(false)
+    const [showMeetingForm, setShowMeetingForm] = useState(false)
+    const [showTutorReviewForm, setShowTutorReviewForm] = useState(false)
 
   useEffect(() => {
     fetch(`/tutors/${tutorId}`)
@@ -21,10 +23,13 @@ function TutorProfile(){
   }
 
   const handleMeetingClick = () => {
-    setShowForm(!showForm)
-    console.log(showForm)
+    setShowMeetingForm(!showMeetingForm)
+    // console.log(showForm)
   }
     
+  const handleReviewClick = () => {
+setShowTutorReviewForm(!showTutorReviewForm)
+  }
     return(
         <>
       <h2>Tutor Profile</h2>
@@ -36,7 +41,11 @@ function TutorProfile(){
         <p><strong>Subject:</strong> {tutor.subject}</p>
         <p><strong>Location:</strong> {tutor.location}</p>
         <button onClick={handleMeetingClick}>Book a Meeting with Me</button> 
-        {showForm ? <NewMeetingForm /> : null}
+        <br/>
+        <br/>
+        <button onClick={handleReviewClick}>Leave a Review</button>
+        {showMeetingForm ? <NewMeetingForm /> : null}
+        {showTutorReviewForm ? <NewTutorReviewForm /> : null}
       </div>
     </>
     )

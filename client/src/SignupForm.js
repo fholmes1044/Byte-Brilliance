@@ -16,6 +16,7 @@ function SignupForm (){
     const { signup } = useContext(UserContext)
     const history = useHistory()
 
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         fetch("/signup", {

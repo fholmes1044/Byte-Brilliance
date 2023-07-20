@@ -1,29 +1,88 @@
+import React, {useState, useContext} from "react"
+import { UserContext } from "./context/user";
+import { useParams } from "react-router-dom";
+
 function NewMeetingForm(){
+    const [date, setDate] = useState("")
+    const [duration, setDuration] = useState("")
+    const [location, setLocation] = useState("")
+    const [topic, setTopic] = useState("")
+    const { tutorId } = useParams();
+    const {user, errors, setErrors, setUser} = useContext(UserContext)
+    console.log("user", user)
+
+    const addNewMeeting = (newMeeting) => {
+        console.log("NM", newMeeting)
+    
+        setUser({ ...user, meetings: [...user.meetings, newMeeting]});
+      }
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault()
+        const formData = {
+            date: date,
+            duration: duration, 
+            location: location, 
+            user_id: user.id,
+            tutor_id: tutorId,
+            topic: topic
+        }
+        fetch("/meetings", {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            // console.log("D", data)
+            if(!data.errors){
+                setDate("");
+                setDuration("");
+                setLocation("");
+                setTopic("");
+                addNewMeeting(data);
+                setErrors([]);
+            }else{
+                const newMeetingFormErrorList = data.errors.map(error => <li key={error}>{error}</li> )
+                setErrors(newMeetingFormErrorList)
+            }
+        })
+        
+    }
 return(
     <div>
-        <form>
+        <form onSubmit={handleFormSubmit}>
+        <label>Date: </label>
+            <input
+            type="date"
+            id="date"
+            value={date}
+            onChange={ (e) => setDate(e.target.value) }
+            /><br/>
         <label>Duration: </label>
             <input
             type="text"
             id="duration"
-            // value={userName}
-            // onChange={ (e) => setUserName(e.target.value) }
+            value={duration}
+            onChange={ (e) => setDuration(e.target.value) }
             /><br/>
         <label>Location: </label>
             <input
             type="text"
             id="location"
-            // value={userName}
-            // onChange={ (e) => setUserName(e.target.value) }
+            value={location}
+            onChange={ (e) => setLocation(e.target.value) }
         /><br/>
         <label>Topic: </label>
             <input
             type="text"
             id="location"
-            // value={userName}
-            // onChange={ (e) => setUserName(e.target.value) }
+            value={topic}
+            onChange={ (e) => setTopic(e.target.value) }
         /><br/>
-        
+        <input type="submit"/>
         </form>
     </div>
 )

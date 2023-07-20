@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
     get '/message', to: 'messages#message'
 
+    post '/meetings', to: "meetings#create"
+
     resources :messages, only: [:index, :create]
 
     get 'auth/failure', to: redirect('/')

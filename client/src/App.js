@@ -1,6 +1,6 @@
 
 import './App.css';
-import React, { useDeferredValue, useEffect, useState, useContext } from "react";
+import React, { useDeferredValue, useEffect, useState} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignupForm from './SignupForm';
 import { UserProvider } from './context/user';
@@ -10,11 +10,10 @@ import HomePage from './Homepage';
 import AllTutorsDisplay from './AllTutorsDisplay';
 import TutorProfile from './TutorProfile';
 import ChatDashboard from './ChatDashboard';
-import { UserContext } from "./context/user";
+import MeetingsDisplay from './MeetingsDisplay';
 
-function App({cable}) {
+function App() {
   const [allTutors, setAllTutors] = useState("")
-  const user = useContext(UserContext)
 
   useEffect(() => {
     fetch("/tutors")
@@ -48,7 +47,9 @@ function App({cable}) {
           <Route exact path= "/chatdashboard">
             <ChatDashboard/>
           </Route>
-      
+          <Route exact path= "/meetings">
+            <MeetingsDisplay/>
+          </Route>
           </Switch>
           
         </BrowserRouter>

@@ -47,6 +47,15 @@ const logoutUser = (e) => {
       </NavLink>
 
       <NavLink
+       to="/meetings"
+       exact
+       activeClassName="activeLink"
+      className="navbar-link"
+      >
+      My Learning Meetings 
+      </NavLink>
+
+      <NavLink
         to="/reviews"
         exact
         activeClassName="activeLink"
@@ -64,6 +73,7 @@ const logoutUser = (e) => {
       >
         Chat Dashboard
       </NavLink>
+
       <button onClick={logoutUser}>Sign Out</button>
     </div>
   );

@@ -19,7 +19,7 @@ function TutorProfile(){
       });
   }, [tutorId]);
 
-console.log(tutor, "Tutor")
+// console.log(tutor, "Tutor")
 
   if (!tutor) {
     return <div>Loading...</div>;
@@ -34,7 +34,8 @@ console.log(tutor, "Tutor")
   }
 
   const tutorReviewsMap = tutor.tutor_reviews.map((tutorReview) => (
-    <TutorReviewTile tutorReview={tutorReview}/>
+    <TutorReviewTile key={tutorReview.id} tutorReview={tutorReview}/>
+   
   ))
     return(
         <>

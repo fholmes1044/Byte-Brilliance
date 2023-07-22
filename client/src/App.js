@@ -21,7 +21,7 @@ function App() {
       .then((tutorData) => setAllTutors(tutorData));
   }, []);
 
- 
+ console.log("td", allTutors)
   return (
     <div className='App'>
       <UserProvider>

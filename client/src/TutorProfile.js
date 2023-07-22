@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import NewMeetingForm from "./NewMeetingForm";
 import NewTutorReviewForm from "./NewTutorReviewForm";
+import TutorReviewTile from "./TutorReviewTile";
 
 
 function TutorProfile(){
@@ -24,11 +25,10 @@ function TutorProfile(){
 
   const handleMeetingClick = () => {
     setShowMeetingForm(!showMeetingForm)
-    // console.log(showForm)
   }
     
   const handleReviewClick = () => {
-setShowTutorReviewForm(!showTutorReviewForm)
+    setShowTutorReviewForm(!showTutorReviewForm)
   }
     return(
         <>
@@ -46,6 +46,11 @@ setShowTutorReviewForm(!showTutorReviewForm)
         <button onClick={handleReviewClick}>Leave a Review</button>
         {showMeetingForm ? <NewMeetingForm /> : null}
         {showTutorReviewForm ? <NewTutorReviewForm /> : null}
+      </div>
+
+      <div>
+        <h2>Tutor Reviews</h2>
+
       </div>
     </>
     )

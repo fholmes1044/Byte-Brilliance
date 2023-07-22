@@ -19,6 +19,8 @@ function TutorProfile(){
       });
   }, [tutorId]);
 
+console.log(tutor, "Tutor")
+
   if (!tutor) {
     return <div>Loading...</div>;
   }
@@ -30,6 +32,10 @@ function TutorProfile(){
   const handleReviewClick = () => {
     setShowTutorReviewForm(!showTutorReviewForm)
   }
+
+  const tutorReviewsMap = tutor.tutor_reviews.map((tutorReview) => (
+    <TutorReviewTile tutorReview={tutorReview}/>
+  ))
     return(
         <>
       <h2>Tutor Profile</h2>
@@ -45,12 +51,12 @@ function TutorProfile(){
         <br/>
         <button onClick={handleReviewClick}>Leave a Review</button>
         {showMeetingForm ? <NewMeetingForm /> : null}
-        {showTutorReviewForm ? <NewTutorReviewForm /> : null}
+        {showTutorReviewForm ? <NewTutorReviewForm tutor={tutor} setTutor={setTutor}/> : null}
       </div>
 
       <div>
         <h2>Tutor Reviews</h2>
-
+      {tutorReviewsMap}
       </div>
     </>
     )

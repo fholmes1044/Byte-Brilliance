@@ -2,13 +2,14 @@ import React, {useState, useContext} from "react";
 import { UserContext } from "./context/user";
 import { useParams } from "react-router-dom";
 
-function NewTutorReviewForm(){
+function NewTutorReviewForm({tutor, setTutor}){
     const [reviewSummary, setReviewSummary] = useState("")
     const { tutorId } = useParams();
     const {errors, setErrors, setUser, user} = useContext(UserContext)
 
     const addNewTutorReview = (newReview ) => {
         console.log("new", newReview )
+        setTutor({...tutor, tutor_reviews: [...tutor.tutor_reviews, newReview]})
         setUser({ ...user, tutor_reviews: [...user.tutor_reviews, newReview]});
     }
 

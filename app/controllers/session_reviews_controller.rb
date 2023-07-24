@@ -5,15 +5,16 @@ class SessionReviewsController < ApplicationController
     end
 
     def create
-        # review = @current_user.session_reviews.build(review_params)
-        # if review.save
-        #   render json: review, status: 201
-        # else
-        #   render json: { errors: review.errors.full_messages }, status: 422
-        # end
+        review = @current_user.session_reviews.build(review_params)
+      
+        if review.save
+          render json: review, status: 201
+        else
+          render json: { errors: review.errors.full_messages }, status: 422
+        end
     end
 
     def review_params
-        params.permit(:meeting_id, :rating, :comment)
-    end 
+        params.permit(:meeting_id, :rating, :comment, :user_id, :review_summary)
+    end
 end

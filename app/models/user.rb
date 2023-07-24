@@ -7,6 +7,7 @@ class User < ApplicationRecord
     has_many :tutor_reviews
     has_many :tutors, through: :tutor_reviews
     has_many :messages, dependent: :destroy
+    has_many :session_reviews
 
     validates :username, :full_name, :age, :email, :password, :password_confirmation, :learning_goals, :location,  presence: true
     validates :age, numericality: {greater_than_or_equal_to: 18}

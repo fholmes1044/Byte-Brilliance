@@ -58,6 +58,15 @@ const logoutUser = (e) => {
       </NavLink>
 
       <NavLink
+        to="/learnerposts"
+        exact
+        activeClassName="activeLink"
+        className="navbar-link"
+      >
+       All Learner Posts
+      </NavLink>
+
+      <NavLink
         to="/reviews"
         exact
         activeClassName="activeLink"

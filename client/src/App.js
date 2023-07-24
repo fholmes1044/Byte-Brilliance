@@ -11,6 +11,7 @@ import AllTutorsDisplay from './AllTutorsDisplay';
 import TutorProfile from './TutorProfile';
 import ChatDashboard from './ChatDashboard';
 import MeetingsDisplay from './MeetingsDisplay';
+import AllPostsDisplay from './AllPostsDisplay';
 
 function App() {
   const [allTutors, setAllTutors] = useState("")
@@ -49,6 +50,9 @@ function App() {
           </Route>
           <Route exact path= "/meetings">
             <MeetingsDisplay/>
+          </Route>
+          <Route exact path= "/learnerposts">
+            <AllPostsDisplay/>
           </Route>
           </Switch>
           

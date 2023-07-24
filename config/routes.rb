@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     
     post '/tutorreviews', to: "tutor_reviews#create"
 
+   get '/learnerposts', to: "learner_posts#index"
+   post '/learnerposts', to: "learner_posts#create"
+
     get 'auth/failure', to: redirect('/')
     get '*path',
       to: 'fallback#index',

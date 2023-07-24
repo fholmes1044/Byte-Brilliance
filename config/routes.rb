@@ -23,17 +23,17 @@ Rails.application.routes.draw do
     get '/message', to: 'messages#message'
 
 
-    # get '/meetings', to: "meetings#index"
-    # post '/meetings', to: "meetings#create"
-    # get "/meetings/id", to
 
     resources :messages, only: [:index, :create]
     resources :meetings, only: [:index, :create, :show]
     
     post '/tutorreviews', to: "tutor_reviews#create"
 
-   get '/learnerposts', to: "learner_posts#index"
-   post '/learnerposts', to: "learner_posts#create"
+    get '/learnerposts', to: "learner_posts#index"
+    post '/learnerposts', to: "learner_posts#create"
+
+    get '/sessionreviews', to: "session_reviews#index"
+    post '/sessionreviews', to: "session_reviews#create"
 
     get 'auth/failure', to: redirect('/')
     get '*path',

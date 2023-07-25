@@ -1,12 +1,13 @@
 import React, {useState, useContext} from "react";
 import { UserContext } from "./context/user";
 
-function NewPostForm(){
+function NewPostForm({allLearnerPosts, setAllLearnerPosts}){
     const [postSummary, setPostSummary] = useState("");
     const [postDate, setPostDate] = useState("");
     const {user, setUser, errors, setErrors} = useContext(UserContext)
 
     const addNewLearnerPost = (newPost) => {
+        setAllLearnerPosts([...allLearnerPosts, newPost])
         setUser({ ...user, learner_posts: [...user.learner_posts, newPost]});
     }
 

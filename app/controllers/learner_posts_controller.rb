@@ -13,6 +13,11 @@ class LearnerPostsController < ApplicationController
         end 
     end
 
+    def my_posts
+      all_current_learner_posts = @current_user.learner_posts
+      render json: all_current_learner_posts
+    end
+
     def tutorreview_params
         params.permit(:user_id, :summary, :date)
     end

@@ -13,7 +13,7 @@ function SessionReviewForm({meetingId}){
     
 
     const handleSessionReviewFormSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         const sessionFormData = {
             meeting_id: meetingId,

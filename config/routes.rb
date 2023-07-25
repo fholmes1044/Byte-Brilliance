@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get '/message', to: 'messages#message'
 
 
+    get '/mylearnerposts', to: "learner_posts#my_posts"
 
     resources :messages, only: [:index, :create]
     resources :meetings, only: [:index, :create, :show]
@@ -31,6 +32,8 @@ Rails.application.routes.draw do
 
     get '/learnerposts', to: "learner_posts#index"
     post '/learnerposts', to: "learner_posts#create"
+
+   
 
     get '/sessionreviews', to: "session_reviews#index"
     post '/sessionreviews', to: "session_reviews#create"

@@ -1,25 +1,34 @@
-import React, {useContext} from "react";
-import { UserContext } from "./context/user";
+import React, { useState, useEffect} from "react";
 import NewPostForm from "./NewPostForm";
 import LearnerPostTile from "./LearnerPostTile";
 
 function AllPostsDisplay(){
-    const {user} = useContext(UserContext)
+    const[allLearnerPosts, setAllLearnerPosts] = useState([])
 
-    if(user.learner_posts === undefined){
-        return <p>...Loading</p>
+    useEffect(() =>{
+        fetch("/learnerposts")
+        .then((r) => r.json())
+        .then((learnerPost) => setAllLearnerPosts(learnerPost))
+        .catch((err) => {
+            console.error('Error making request: ', err);
+        });
+      }, []);
+      
+
+    if(allLearnerPosts.length === 0 || allLearnerPosts === undefined){
+        return <p>There are no Learner Posts</p>
         }
 
-    const userPostsMap = user.learner_posts.map((post) => (
+    const allLearnerPostsMap = allLearnerPosts.map((post) => (
         <LearnerPostTile key={post.id} post={post}/>
     ))
 return(
     <>
     <h2>All Learner Posts</h2>
     <p>What did you learn?</p>
-    <NewPostForm/>
+    <NewPostForm allLearnerPosts={allLearnerPosts} setAllLearnerPosts={setAllLearnerPosts}/>
     <h2>Check out all the User Learning</h2>
-    {userPostsMap}
+    {allLearnerPostsMap}
     </>
 )
 }

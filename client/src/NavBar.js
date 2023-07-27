@@ -24,7 +24,7 @@ const logoutUser = (e) => {
   return (
     <div id="navbar">
 
-      <h2> {user.full_name}, It is time to reflect</h2>
+      <h2> {user.full_name}, It is time to Learn!</h2>
 
       <br/>
       

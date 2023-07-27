@@ -38,18 +38,33 @@ function UserProvider({ children }) {
     //     setErrors([])
     // }, [location.pathname])
 
-    ws.onopen = () => {
-        console.log("CONNECTED TO WEBSOCKET", user.id)
-        ws.send(
-          JSON.stringify({
-            command: "subscribe",
-            identifier: JSON.stringify({
-            //   id: user.id,
-              channel: "MessagesChannel"
-            })
-          })
-        )
-      }
+    // ws.onopen = () => {
+    //     console.log("CONNECTED TO WEBSOCKET", user.id)
+    //     ws.send(
+    //       JSON.stringify({
+    //         command: "subscribe",
+    //         identifier: JSON.stringify({
+    //         //   id: user.id,
+    //           channel: "MessagesChannel"
+    //         })
+    //       })
+    //     )
+    //   }
+
+    useEffect(() => {
+        // WebSocket communication
+        ws.onopen = () => {
+            console.log("CONNECTED TO WEBSOCKET", user.id)
+            ws.send(
+                JSON.stringify({
+                    command: "subscribe",
+                    identifier: JSON.stringify({
+                        channel: "MessagesChannel"
+                    })
+                })
+            );
+        };
+    }, [user.id]);
 
     const login = (userobj) => {
         setUser(userobj)

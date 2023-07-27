@@ -1,6 +1,9 @@
 import React from "react";
 
+
 function MyPostTile({post}){
+
+
     return(
         <>
          <p><strong>Who?</strong> {post.user.username} </p>

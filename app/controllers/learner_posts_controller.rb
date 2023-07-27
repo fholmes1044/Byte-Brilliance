@@ -5,7 +5,7 @@ class LearnerPostsController < ApplicationController
     end
 
     def create
-        learner_post = @current_user.learner_posts.create(tutorreview_params)
+        learner_post = @current_user.learner_posts.create(learner_post_params)
         if learner_post.valid?
           render json: learner_post, status: :created
         else
@@ -18,7 +18,20 @@ class LearnerPostsController < ApplicationController
       render json: all_current_learner_posts
     end
 
-    def tutorreview_params
+    def update 
+      post = @current_user.learner_posts.find_by(id: params[:id])
+      if post
+        if post.update(learner_post_params)
+          render json: post, status: :ok
+        else
+          render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
+        end
+      else
+        render json: { error: "Learner post not found" }, status: :not_found
+      end
+    end 
+
+    def learner_post_params
         params.permit(:user_id, :summary, :date)
     end
 end

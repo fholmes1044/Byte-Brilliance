@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
     get '/learnerposts', to: "learner_posts#index"
     post '/learnerposts', to: "learner_posts#create"
-
+    patch  '/learnerposts/:id', to: "learner_posts#update"
    
 
     get '/sessionreviews', to: "session_reviews#index"

@@ -12,14 +12,13 @@ function UserProvider({ children }) {
     const [errors, setErrors] = useState([])
     const [loading, setLoading] = useState(false);
     const history = useHistory()
-    // const location = useLocation()
+    const location = useLocation()
 
     useEffect(() => {
         setLoading(true);
         fetch("/me")
             .then(res => res.json())
             .then((data) =>{
-                // console.log("data", data)
                 setUser(data)
                 if(data.errors){
                     setErrors(data.errors);
@@ -28,7 +27,6 @@ function UserProvider({ children }) {
                     
                 }else{
                     setLoggedIn(true)
-                    // console.log("UU", user)
                 }
                 setLoading(false)
             })
@@ -74,9 +72,9 @@ function UserProvider({ children }) {
 
 
     const logout = () => {
-        // history.push("/")
+        history.push("/")
         setLoggedIn(false);
-        setUser(null)  
+        setUser({})  
         setErrors([])
         
     }

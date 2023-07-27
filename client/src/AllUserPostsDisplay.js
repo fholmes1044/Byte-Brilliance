@@ -10,6 +10,9 @@ function AllUserPostsDisplay(){
 if(user.learner_posts === undefined){
     return <p>...Loading</p>
     }
+    else if(user.learner_posts.length ===0){
+        return <p>You have no posts yet</p>
+    }
     const handleDeletePost= (id) => {
         fetch(`/learnerposts/${id}`, {
             method: "DELETE"

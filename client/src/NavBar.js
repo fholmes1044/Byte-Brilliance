@@ -1,9 +1,10 @@
 import React, {useContext} from "react";
 import { UserContext } from "./context/user";
-import { NavLink} from "react-router-dom";
+import { NavLink, useHistory} from "react-router-dom";
 
 function NavBar() {
 const {user, logout, loggedIn} = useContext(UserContext)
+const history = useHistory();
 
 console.log(user)
 
@@ -17,6 +18,7 @@ const logoutUser = (e) => {
   })
     .then(() =>{
       logout()
+      history.push("/");
     })
 }
 

@@ -5,7 +5,7 @@ function EditPostForm( {post, setEditFormId, handleDeletePost, summary} ){
     const [updatedSummary, setUpdatedSummary] = useState(summary)
     const {setUser} = useContext(UserContext)
 
-    console.log(post.id)
+    // console.log(post.id)
 
     const handleUpdatePost = () => {
         const updatedPost = {
@@ -28,7 +28,6 @@ function EditPostForm( {post, setEditFormId, handleDeletePost, summary} ){
                     post.id === updatedPostData.id ? updatedPostData : post
                   ),
                 }));
-                 // Clear the edit form id to exit the edit mode
           setEditFormId(null);
         });
       }

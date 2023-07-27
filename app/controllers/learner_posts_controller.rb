@@ -31,6 +31,16 @@ class LearnerPostsController < ApplicationController
       end
     end 
 
+    def destroy
+      post = @current_user.learner_posts.find_by(id: params[:id])
+      if post
+        post.destroy
+        head :no_content
+      else 
+        render json: {error: "Post not found"}, status: :not_found
+      end
+    end 
+
     def learner_post_params
         params.permit(:user_id, :summary, :date)
     end

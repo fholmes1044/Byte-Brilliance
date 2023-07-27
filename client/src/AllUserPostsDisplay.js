@@ -10,8 +10,19 @@ function AllUserPostsDisplay(){
 if(user.learner_posts === undefined){
     return <p>...Loading</p>
     }
-    const handleDeletePost= () => {
-
+    const handleDeletePost= (id) => {
+        fetch(`/learnerposts/${id}`, {
+            method: "DELETE"
+        }).then((response) => {
+            if (response.ok){
+                setUser(() => {
+                    const deletedPost = user.learner_posts.find((post) =>  post.id === id);
+                    const updatedPosts = user.learner_posts.filter((post) => post.id !== deletedPost.id);
+                    const updatedUser = { ...user, learner_posts: updatedPosts};
+                    return updatedUser
+                })
+            }
+        })
     }
 
     const userPostsMap = user.learner_posts.map((post) => (
@@ -34,12 +45,6 @@ if(user.learner_posts === undefined){
         </div>
       ));
 
-   
-
-   
-// const userPostsMap = user.learner_posts.map((post) => (
-//     <MyPostTile key={post.id} post={post}/>
-// ))
     return(
         <>
         Check out Your Learning

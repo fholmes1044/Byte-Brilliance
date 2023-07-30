@@ -17,7 +17,6 @@ function TutorDisplayTile({tutor}){
       fetch(`/tutors/${id}`)
           .then((response) => response.json())
           .then((data) => {
-            console.log(data,"data")
             history.push(`/tutors/${data.id}`)
           })
         

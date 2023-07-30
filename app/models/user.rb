@@ -5,7 +5,8 @@ class User < ApplicationRecord
     has_many :meetings
     has_many :tutors, through: :meetings
     has_many :tutor_reviews
-    has_many :tutors, through: :tutor_reviews
+    # has_many :tutors, through: :tutor_reviews
+    has_many :reviewed_tutors, through: :tutor_reviews, source: :tutor
     has_many :messages, dependent: :destroy
     has_many :session_reviews
 

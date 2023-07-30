@@ -1,4 +1,3 @@
-
 import './App.css';
 import React, { useDeferredValue, useEffect, useState} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";

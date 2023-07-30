@@ -6,7 +6,7 @@ function NavBar() {
 const {user, logout, loggedIn} = useContext(UserContext)
 const history = useHistory();
 
-console.log(user)
+// console.log(user)
 
 const logoutUser = (e) => {
   e.preventDefault()

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import NewMeetingForm from "./NewMeetingForm";
 import NewTutorReviewForm from "./NewTutorReviewForm";
 import TutorReviewTile from "./TutorReviewTile";
+import "./TutorProfile.css"; 
 
 
 function TutorProfile(){
@@ -19,7 +20,6 @@ function TutorProfile(){
       });
   }, [tutorId]);
 
-// console.log(tutor, "Tutor")
 
   if (!tutor) {
     return <div>Loading...</div>;
@@ -35,14 +35,17 @@ function TutorProfile(){
 
   const tutorReviewsMap = tutor.tutor_reviews.map((tutorReview) => (
     <TutorReviewTile key={tutorReview.id} tutorReview={tutorReview}/>
-   
   ))
+
+  const defaultProfilePicture = "https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHRoaW5raW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60";
+  const tutorProfilePicture = tutor.profile_picture || defaultProfilePicture;
+
     return(
         <>
       <h2>Tutor Profile</h2>
       <div>
         <h3>{tutor.name}</h3>
-        <div><img src={tutor.profile_picture}/></div>
+        <div><img src={tutorProfilePicture} className="profile-picture"/></div>
         <p><strong>Experience:</strong> {tutor.experience}</p>
         <p><strong>Hourly Rate:</strong> {tutor.hourly_rate}</p>
         <p><strong>Subject:</strong> {tutor.subject}</p>

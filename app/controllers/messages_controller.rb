@@ -1,13 +1,18 @@
 class MessagesController < ApplicationController
 skip_before_action :authorize, only: :index
 
+  # def index
+  #   messages = Message.all
+  #   render json: messages.to_json(include: :user), status: 200
+  # end
   def index
     messages = Message.all
-    render json: messages, status: 200
+    render json: messages, include: :user, status: 200
   end
 
   def create
     message = @current_user.messages.build(message_params)
+    
     if message.save
       render json: message, status: 201
     else

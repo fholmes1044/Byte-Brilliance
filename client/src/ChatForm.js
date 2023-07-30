@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function ChatForm({ addMessage, setIsTyping }){
+function ChatForm({ setIsTyping }){
     const [content, setContent] = useState("");
 
     const handleSubmit = (e) =>{

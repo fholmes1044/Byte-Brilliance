@@ -5,6 +5,8 @@ class Message < ApplicationRecord
 
     private 
     def broadcast_message
+       
         ActionCable.server.broadcast("MessagesChannel", self.to_json(include: :user))
+      
     end 
 end

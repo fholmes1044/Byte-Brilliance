@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect} from "react";
 import {useHistory, useLocation} from "react-router-dom";
 
 const UserContext = React.createContext();
@@ -6,7 +6,6 @@ const UserContext = React.createContext();
 const ws = new WebSocket("ws://localhost:3000/cable")
 
 function UserProvider({ children }) {
-    // const [user, setUser] = useState({events:[]})
     const [user, setUser] = useState({})
     const [loggedIn, setLoggedIn] = useState(null)
     const [errors, setErrors] = useState([])
@@ -14,6 +13,7 @@ function UserProvider({ children }) {
     const history = useHistory()
     const location = useLocation()
 
+    
     useEffect(() => {
         setLoading(true);
         fetch("/me")
@@ -32,38 +32,23 @@ function UserProvider({ children }) {
             })
         }, [])
 
-    // useEffect(() => {
-    //     setErrors([])
-    // }, [location.pathname])
-
-    // ws.onopen = () => {
-    //     console.log("CONNECTED TO WEBSOCKET", user.id)
-    //     ws.send(
-    //       JSON.stringify({
-    //         command: "subscribe",
-    //         identifier: JSON.stringify({
-    //         //   id: user.id,
-    //           channel: "MessagesChannel"
-    //         })
-    //       })
-    //     )
-    //   }
-
     useEffect(() => {
-        // WebSocket communication
-        ws.onopen = () => {
-            console.log("CONNECTED TO WEBSOCKET", user.id)
-            ws.send(
-                JSON.stringify({
-                    command: "subscribe",
-                    identifier: JSON.stringify({
-                        channel: "MessagesChannel"
-                    })
-                })
-            );
-        };
-    }, [user.id]);
+        setErrors([])
+    }, [location.pathname])
 
+    ws.onopen = () => {
+        console.log("CONNECTED TO WEBSOCKET")
+        
+        ws.send(
+            JSON.stringify({
+                command: "subscribe", 
+                identifier: JSON.stringify({
+                    channel: "MessagesChannel"
+                })
+            })
+        )
+    }
+      
     const login = (userobj) => {
         setUser(userobj)
         setLoggedIn(true)
@@ -82,7 +67,6 @@ function UserProvider({ children }) {
     const signup = (user) => {
         setUser(user)
         setLoggedIn(true);
-        console.log("USER CONTEXT", user)
     }
 
     

@@ -53,6 +53,7 @@ return(
         /><br/>
         <input type="submit"/>
     </form>
+    {errors}
     </>
 )
 }

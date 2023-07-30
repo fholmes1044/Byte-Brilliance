@@ -22,7 +22,8 @@ function ChatDashboard(){
     
           const message = JSON.parse(data.message);
           setMessages((prevMessages) => [...prevMessages, message]);
-        }})
+        };
+      }, [])
     
    
     

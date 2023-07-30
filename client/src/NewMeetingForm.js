@@ -36,8 +36,9 @@ function NewMeetingForm(){
         })
         .then((response) => response.json())
         .then((data) => {
-            // console.log("D", data)
+          
             if(!data.errors){
+                window.alert("Meeting was created!");
                 setDate("");
                 setDuration("");
                 setLocation("");
@@ -84,6 +85,7 @@ return(
         /><br/>
         <input type="submit"/>
         </form>
+        {errors}
     </div>
 )
 }

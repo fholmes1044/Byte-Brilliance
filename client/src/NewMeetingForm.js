@@ -9,11 +9,8 @@ function NewMeetingForm(){
     const [topic, setTopic] = useState("")
     const { tutorId } = useParams();
     const {user, errors, setErrors, setUser} = useContext(UserContext)
-    console.log("user", user)
-
+   
     const addNewMeeting = (newMeeting) => {
-        console.log("NM", newMeeting)
-    
         setUser({ ...user, meetings: [...user.meetings, newMeeting]});
       }
 

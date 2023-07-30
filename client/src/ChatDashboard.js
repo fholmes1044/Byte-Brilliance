@@ -6,24 +6,26 @@ import ChatForm from "./ChatForm";
 function ChatDashboard(){
     const [messages, setMessages] = useState([])
     const [isTyping, setIsTyping] = useState(false);
-    const {ws} = useContext(UserContext)
+    const {ws} = useContext(UserContext) 
 
       useEffect(() => {
-        
+      
         fetch("/messages")
           .then((resp) => resp.json())
           .then((data) => setMessages(data));
     
         ws.onmessage = (event) => {
           const data = JSON.parse(event.data);
+          
           if (data.type === "ping") return;
           if (data.type === "welcome") return;
           if (data.type === "confirm_subscription") return;
-    
+
           const message = JSON.parse(data.message);
           setMessages((prevMessages) => [...prevMessages, message]);
         };
-      }, [])
+        
+      }, [messages])
     
    
     

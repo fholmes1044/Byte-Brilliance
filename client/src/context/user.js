@@ -61,7 +61,6 @@ function UserProvider({ children }) {
         setLoggedIn(false);
         setUser({})  
         setErrors([])
-        
     }
 
     const signup = (user) => {

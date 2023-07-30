@@ -1,5 +1,5 @@
 import ChatMessage from './ChatMessage'
-import "./Chat.css"
+import "./Styling/Chat.css"
 
 function ChatDisplay({ messages, isTyping }){
     const chatMessages = messages.map( message => <ChatMessage key={ message.id } chat={ message }  />)

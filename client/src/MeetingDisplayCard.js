@@ -6,11 +6,13 @@ import SessionReviewForm from "./SessionReviewForm";
 function MeetingDisplayCard({meeting}){
     
     const [showReviewForm, setShowReviewForm] = useState(false);
-    const {user, logout, loggedIn} = useContext(UserContext)
+    const {user} = useContext(UserContext)
 
     const meetingCardStyle = {
+      borderRadius: "8px",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
         border: "1px solid blue", 
-        width: "400px",
+        width: "350px",
         height: "400px",
       };
 

@@ -21,6 +21,7 @@ function MeetingDisplay(){
 
     return(
     <div>
+        <h2>My Sessions</h2>
         <div style={meetingListStyle}>{meetingsMap}</div>
     </div>
     )

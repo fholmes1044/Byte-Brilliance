@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import NewMeetingForm from "./NewMeetingForm";
 import NewTutorReviewForm from "./NewTutorReviewForm";
 import TutorReviewTile from "./TutorReviewTile";
-import "./TutorProfile.css"; 
+import "./Styling/TutorProfile.css"; 
+import "./Styling/TutorReviewTile.css";
 
 
 function TutorProfile(){
@@ -57,9 +58,9 @@ function TutorProfile(){
         {showMeetingForm ? <NewMeetingForm /> : null}
         {showTutorReviewForm ? <NewTutorReviewForm tutor={tutor} setTutor={setTutor}/> : null}
       </div>
-
-      <div>
-        <h2>Tutor Reviews</h2>
+<h2>Tutor Reviews</h2>
+      <div className="tutor-reviews-container">
+        
       {tutorReviewsMap}
       </div>
     </>

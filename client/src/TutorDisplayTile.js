@@ -6,8 +6,10 @@ function TutorDisplayTile({tutor}){
     const {name, subject, availability, experience, id} = tutor
 
     const cardStyle = {
+      borderRadius: "8px",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
         border: "1px solid blue", 
-        width: "400px",
+        width: "350px",
         height: "400px",
       };
 

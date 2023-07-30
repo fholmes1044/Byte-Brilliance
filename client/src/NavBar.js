@@ -1,12 +1,12 @@
 import React, {useContext} from "react";
 import { UserContext } from "./context/user";
 import { NavLink, useHistory} from "react-router-dom";
+import "./Styling/NavBar.css"
 
 function NavBar() {
 const {user, logout, loggedIn} = useContext(UserContext)
 const history = useHistory();
 
-// console.log(user)
 
 const logoutUser = (e) => {
   e.preventDefault()

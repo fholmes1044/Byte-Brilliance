@@ -31,7 +31,7 @@ function ChatDashboard(){
     
     return(
         <div id="container">
-            <h3> Chat </h3>
+            <h3> Talk Tech With New People</h3>
             <ChatDisplay messages={ messages }  isTyping={ isTyping }/>
             <ChatForm  setIsTyping={ setIsTyping } />
         </div>

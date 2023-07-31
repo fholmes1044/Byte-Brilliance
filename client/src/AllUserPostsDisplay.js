@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react";
 import { UserContext } from "./context/user";
 import MyPostTile from "./MyPostTile";
 import EditPostForm from "./EditPostForm";
+import "./Styling/MyPostTile.css"
 
 function AllUserPostsDisplay(){
    const {user, setUser} = useContext(UserContext) 
@@ -29,7 +30,7 @@ if(user.learner_posts === undefined){
     }
 
     const userPostsMap = user.learner_posts.map((post) => (
-        <div key={post.id}>
+        <div key={post.id} className="my-post-tile">
           <MyPostTile post={post} />
           {editFormId === post.id ? (
             <EditPostForm
@@ -50,7 +51,7 @@ if(user.learner_posts === undefined){
 
     return(
         <>
-        Check out Your Learning
+        <h2>Check out Your Learning</h2>
          {userPostsMap}
         </>
     )

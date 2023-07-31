@@ -1,0 +1,24 @@
+.signup-form-container {
+    display: flex;
+    background-color: #f2f2f2;
+  }
+  
+  .picture-container {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .picture-container img {
+    max-width: 100%;
+    border-radius: 8px; 
+  }
+  
+  .form-container {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ccc; 
+  border-radius: 10px;
+  }
+
+
+  

@@ -3,7 +3,7 @@ import { UserContext } from "./context/user";
 import { NavLink, useHistory} from "react-router-dom";
 import "./Styling/NavBar.css"
 
-function NavBar() {
+function NavBar({isLoginPage, isSignupPage}) {
 const {user, logout, loggedIn} = useContext(UserContext)
 const history = useHistory();
 
@@ -94,13 +94,18 @@ const logoutUser = (e) => {
   return (
     <div>
       <NavLink
+      to="/">
+        <button style={{ fontSize: "18px", padding: "12px 24px",  borderRadius: "15px", marginRight: "15px", }}>Home</button>
+      </NavLink>
+      <NavLink
       to="/login">
-        <button>Login</button>
+        <button style={{ fontSize: "18px", padding: "12px 24px",  borderRadius: "15px", marginRight: "15px", }}>Login</button>
       </NavLink>
       <NavLink
         to="/signup">
-        <button>Signup</button>
+        <button style={{ fontSize: "18px", padding: "12px 24px" ,  borderRadius: "15px",marginRight: "15px",}}>Signup</button>
       </NavLink>
+
     </div>
   )
 }

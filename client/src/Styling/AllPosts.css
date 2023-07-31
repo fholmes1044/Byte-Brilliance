@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Add any other container-level styles you desire */
   }
 
   .bubble-container {
@@ -11,7 +10,6 @@
     justify-content: center;
   }
   
-  /* Optional: To add spacing between the thought bubbles */
   .bubble-container > div {
     margin: 10px;
   }

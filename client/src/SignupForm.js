@@ -1,6 +1,7 @@
 import React, {useState, useContext} from "react";
 import { UserContext } from "./context/user";
 import { useHistory} from "react-router-dom";
+import "./Styling/SignupForm.css"
 
 function SignupForm (){
     const [username, setUsername] = useState("")
@@ -59,8 +60,15 @@ function SignupForm (){
         })
     };
 
-    return(
-        <div>
+    return(  
+        <div className="signup-form-container">
+            <div className="picture-container">
+            <img
+            src="https://images.unsplash.com/photo-1566837945700-30057527ade0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+            alt="Signup"
+            />
+        </div>
+        <div className="form-container">
             <h2>Signup </h2>
             <form onSubmit={handleSubmit}>
                 <label>Username: </label>
@@ -139,6 +147,7 @@ function SignupForm (){
             <ul>
                 {errors}
             </ul>
+            </div>
         </div>
     )
 }

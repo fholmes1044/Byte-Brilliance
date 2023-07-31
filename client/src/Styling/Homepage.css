@@ -1,17 +1,32 @@
 
-.homepage-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #3f51b5, #019fb3);
-    color: #fff;
-    text-align: center;
-    font-family: Arial, sans-serif;
+.homepage-container { 
+  display: grid;
+  grid-template-columns: 1fr; 
+  grid-gap: 20px; 
+  background: linear-gradient(135deg, #3f51b5, #019fb3);
+  color: #fff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  }
+
+  .homepage-container img {
+    display: block; 
+    margin: 0 auto; 
+    max-width: 100%; 
+  }
+  .homepage-container h4 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px; 
   }
   
+ 
+  .homepage-container p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
   .welcome-text {
-    font-size: 24px;
+    font-size: 44px;
   }
   
   .learn-text {

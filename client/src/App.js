@@ -15,14 +15,14 @@ import AllUserPostsDisplay from './AllUserPostsDisplay';
 
 function App() {
   const [allTutors, setAllTutors] = useState("")
-
+  
   useEffect(() => {
     fetch("/tutors")
       .then((r) => r.json())
       .then((tutorData) => setAllTutors(tutorData));
   }, []);
 
-//  console.log("td", allTutors)
+
   return (
     <div className='App'>
       <UserProvider>

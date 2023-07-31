@@ -1,15 +1,16 @@
 import React from "react";
+import "./Styling/MyPostTile.css"
 
 
 function MyPostTile({post}){
-
-
+   
     return(
-        <>
-         <p><strong>Who?</strong> {post.user.username} </p>
+        <div >
+            <div className="content-wrapper"> 
         <p><strong>When?</strong> {post.date}</p>
         <p><strong> What?</strong> {post.summary}</p>
-        </>
+            </div>
+        </div>
     )
 }
 

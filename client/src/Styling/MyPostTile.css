@@ -1,0 +1,13 @@
+.my-post-tile {
+    border: 3px solid #1c0250; 
+    padding: 20px 10px; 
+  }
+  
+  .my-post-tile button {
+    margin-right: 5px; 
+  }
+
+  .content-wrapper {
+    padding: 20px 10px;
+  }
+  

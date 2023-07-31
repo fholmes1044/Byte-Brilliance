@@ -4,7 +4,7 @@ import MeetingDisplayCard from "./MeetingDisplayCard";
 
 function MeetingDisplay(){
     const {user} = useContext(UserContext)
-    // console.log(user.meetings)
+
     const meetingListStyle = {
         display: "flex",
         flexWrap: "wrap",

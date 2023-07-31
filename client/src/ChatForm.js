@@ -38,7 +38,7 @@ function ChatForm({ setIsTyping }){
           value={ content }
           onChange={ e => setContent(e.target.value) }
           onKeyDown={ handleKeyDown }
-          placeholder="Enter Text..."
+          placeholder="Enter New Chat..."
         />
         <input type="submit" value="Send" />
       </form>

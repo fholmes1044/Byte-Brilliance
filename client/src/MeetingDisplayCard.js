@@ -16,8 +16,6 @@ function MeetingDisplayCard({meeting}){
         height: "400px",
       };
 
-      
-
       const handleSessionClick = () => {
         setShowReviewForm(!showReviewForm);
       }

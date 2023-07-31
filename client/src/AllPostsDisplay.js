@@ -20,16 +20,12 @@ function AllPostsDisplay(){
         return <p>There are no Learner Posts</p>
         }
 
-    // const allLearnerPostsMap = allLearnerPosts.map((post) => (
-    //     <LearnerPostTile key={post.id} post={post}/>
-    // ))
 return(
     <div className="all-posts-container">
     <h2>All Learner Posts</h2>
     <p>What did you learn?</p>
     <NewPostForm allLearnerPosts={allLearnerPosts} setAllLearnerPosts={setAllLearnerPosts}/>
     <h2>Check out all the User Learning</h2>
-    {/* {allLearnerPostsMap} */}
     <div className="bubble-container">
         {allLearnerPosts.map((post) => (
           <LearnerPostTile key={post.id} post={post} />

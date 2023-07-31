@@ -15,12 +15,6 @@ class UsersController < ApplicationController
         render json: @current_user
     end 
 
-    # def google
-    #     begin
-    #       data = Google::Auth::IDTokens.verify_oidc access_token, aud: "825029250438-h983qrk6pdse6hofh9b0j2qu439ninb9.apps.googleusercontent.com"
-    #     rescue StandardError => e
-    #     end
-    #   end
 
     private 
     def user_params

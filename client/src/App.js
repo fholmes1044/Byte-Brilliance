@@ -14,7 +14,7 @@ import AllPostsDisplay from './AllPostsDisplay';
 import AllUserPostsDisplay from './AllUserPostsDisplay';
 
 function App() {
-  const [allTutors, setAllTutors] = useState("")
+  const [allTutors, setAllTutors] = useState([])
   
   useEffect(() => {
     fetch("/tutors")

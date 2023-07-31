@@ -12,7 +12,7 @@ function TutorProfile() {
   const [tutor, setTutor] = useState(null);
   const [showMeetingForm, setShowMeetingForm] = useState(false);
   const [showTutorReviewForm, setShowTutorReviewForm] = useState(false);
-  const { errors } = useContext(UserContext);
+  const { loggedIn, errors } = useContext(UserContext);
 
   useEffect(() => {
     fetch(`/tutors/${tutorId}`)
@@ -22,7 +22,11 @@ function TutorProfile() {
       });
   }, [tutorId]);
 
-  if (!tutor ) {
+  if (!loggedIn) {
+    return <p style={{background:"#f79ea3"}}>{errors} Please login or signup.</p>;
+  }
+
+  if (!tutor) {
     return <div>Loading...</div>;
   }
 
@@ -39,26 +43,24 @@ function TutorProfile() {
 
   return (
     <>
-      {!errors && (
+      <div>
+        <h2>Tutor Profile</h2>
         <div>
-          <h2>Tutor Profile</h2>
-          <div>
-            <h3>{tutor.name}</h3>
-            <div><img src={tutorProfilePicture} className="profile-picture" alt="profile" /></div>
-            <p><strong>Experience:</strong> {tutor.experience}</p>
-            <p><strong>Hourly Rate:</strong> {tutor.hourly_rate}</p>
-            <p><strong>Subject:</strong> {tutor.subject}</p>
-            <p><strong>Location:</strong> {tutor.location}</p>
-            <button onClick={handleMeetingClick}>Book a Meeting with Me</button>
-            <br />
-            <br />
-            <button onClick={handleReviewClick}>Leave a Review</button>
-            {showMeetingForm ? <NewMeetingForm /> : null}
-            {showTutorReviewForm ? <NewTutorReviewForm tutor={tutor} setTutor={setTutor} /> : null}
-          </div>
-            <h2>Tutor Reviews</h2>
+          <h3>{tutor.name}</h3>
+          <div><img src={tutorProfilePicture} className="profile-picture" alt="profile" /></div>
+          <p><strong>Experience:</strong> {tutor.experience}</p>
+          <p><strong>Hourly Rate:</strong> {tutor.hourly_rate}</p>
+          <p><strong>Subject:</strong> {tutor.subject}</p>
+          <p><strong>Location:</strong> {tutor.location}</p>
+          <button onClick={handleMeetingClick}>Book a Meeting with Me</button>
+          <br />
+          <br />
+          <button onClick={handleReviewClick}>Leave a Review</button>
+          {showMeetingForm ? <NewMeetingForm /> : null}
+          {showTutorReviewForm ? <NewTutorReviewForm tutor={tutor} setTutor={setTutor} /> : null}
         </div>
-      )}
+        <h2>Tutor Reviews</h2>
+      </div>
 
       <div className="tutor-reviews-container">
         {Array.isArray(tutor.tutor_reviews) ? (

@@ -1,10 +1,12 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useContext} from "react";
+import { UserContext } from "./context/user";
 import NewPostForm from "./NewPostForm";
 import LearnerPostTile from "./LearnerPostTile";
 import "./Styling/AllPosts.css"
 
 function AllPostsDisplay(){
     const[allLearnerPosts, setAllLearnerPosts] = useState([])
+    const { user, errors } = useContext(UserContext);
 
     useEffect(() =>{
         fetch("/learnerposts")
@@ -15,10 +17,9 @@ function AllPostsDisplay(){
         });
       }, []);
       
-
-    if(allLearnerPosts.length === 0 || allLearnerPosts === undefined){
-        return <p>There are no Learner Posts</p>
-        }
+    if (!user || Object.keys(user).length === 0) {
+      return <p style={{background:"#f79ea3"}}>{errors} Please login or signup.</p>;
+    }
 
 return(
     <div className="all-posts-container">

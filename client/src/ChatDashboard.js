@@ -6,7 +6,7 @@ import ChatForm from "./ChatForm";
 function ChatDashboard(){
     const [messages, setMessages] = useState([])
     const [isTyping, setIsTyping] = useState(false);
-    const {ws} = useContext(UserContext) 
+    const {ws,errors, user} = useContext(UserContext) 
 
       useEffect(() => {
       
@@ -20,21 +20,28 @@ function ChatDashboard(){
           if (data.type === "ping") return;
           if (data.type === "welcome") return;
           if (data.type === "confirm_subscription") return;
+          
+          const message = data.message ? JSON.parse(data.message) : null;
 
-          const message = JSON.parse(data.message);
           setMessages((prevMessages) => [...prevMessages, message]);
         };
         
       }, [messages])
     
    
-    
+      const isUserLoggedIn = user && Object.keys(user).length > 0;
     return(
-        <div id="container">
-            <h3> Talk Tech With New People</h3>
-            <ChatDisplay messages={ messages }  isTyping={ isTyping }/>
-            <ChatForm  setIsTyping={ setIsTyping } />
-        </div>
+      <div id="container">
+      {isUserLoggedIn ? (
+        <>
+          <h3> Talk Tech With New People</h3>
+          <ChatDisplay messages={messages} isTyping={isTyping} />
+          <ChatForm setIsTyping={setIsTyping} />
+        </>
+      ) : (
+        <p style={{background:"#f79ea3"}}>{errors} Please login or signup.</p>
+      )}
+    </div>
     )
 }
 

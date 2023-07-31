@@ -3,7 +3,7 @@ import { UserContext } from "./context/user";
 import MeetingDisplayCard from "./MeetingDisplayCard";
 
 function MeetingDisplay(){
-    const {user} = useContext(UserContext)
+    const {user,errors} = useContext(UserContext)
 
     const meetingListStyle = {
         display: "flex",
@@ -11,7 +11,10 @@ function MeetingDisplay(){
         gap: "20px",
         justifyContent: "center"
       };
-
+      
+    if (Object.keys(user).length === 0){
+        return <p style={{background:"#f79ea3"}}>{errors} Please login or signup</p>
+    }
     if(user.meetings === undefined){
     return <p>...Loading</p>
     }

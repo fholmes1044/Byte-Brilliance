@@ -7,6 +7,7 @@ import "./Styling/LoginForm.css"
 function LoginForm (){
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
+    const [showErrors, setShowErrors] = useState(false)
     
     const {errors, setErrors, login} = useContext(UserContext)
     const history = useHistory()
@@ -37,7 +38,7 @@ function LoginForm (){
             })
         })
         .then((res) => res.json())
-        .then(loggedInUser => {
+        .then((loggedInUser) => {
             if(!loggedInUser.errors){
                 login(loggedInUser)
                 history.push('/')
@@ -45,6 +46,7 @@ function LoginForm (){
                 setUserName("")
                 setPassword("")
               setErrors(loggedInUser.errors)
+              setShowErrors(true);
             }
         })
     }
@@ -115,7 +117,7 @@ function LoginForm (){
             />
             </div>
             <ul>
-                {errors}
+                {showErrors && errors}
             </ul>
             </div>
         </div>

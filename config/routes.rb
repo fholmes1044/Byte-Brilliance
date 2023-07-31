@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 
   mount ActionCable.server => "/cable"
    
@@ -16,9 +12,6 @@ Rails.application.routes.draw do
     
     post '/auth/google_oauth2/callback', to: "sessions#google_auth"
     get '/login', to: 'sessions#new'
-
-    get '/message', to: 'messages#message'
-
 
     get '/mylearnerposts', to: "learner_posts#my_posts"
 

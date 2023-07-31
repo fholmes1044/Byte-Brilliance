@@ -16,6 +16,7 @@ function SignupForm (){
     const {errors, setErrors} = useContext(UserContext)
     const { signup } = useContext(UserContext)
     const history = useHistory()
+    const [showSignupErrors, setSignupShowErrors] = useState(false)
 
     
     const handleSubmit = (e) => {
@@ -56,6 +57,7 @@ function SignupForm (){
               
               const errorLis = user.errors.map(error => <li>{error}</li> )
               setErrors(errorLis)
+              setSignupShowErrors(true)
             }
         })
     };
@@ -145,7 +147,7 @@ function SignupForm (){
                 <input type="submit"/>
             </form>
             <ul>
-                {errors}
+                {showSignupErrors && errors}
             </ul>
             </div>
         </div>

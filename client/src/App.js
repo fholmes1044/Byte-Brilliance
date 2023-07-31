@@ -1,5 +1,5 @@
 import './Styling/App.css';
-import React, { useDeferredValue, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignupForm from './SignupForm';
 import { UserProvider } from './context/user';

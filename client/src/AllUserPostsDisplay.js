@@ -5,9 +5,13 @@ import EditPostForm from "./EditPostForm";
 import "./Styling/MyPostTile.css"
 
 function AllUserPostsDisplay(){
-   const {user, setUser} = useContext(UserContext) 
+   const {user, setUser, errors} = useContext(UserContext) 
     const [editFormId, setEditFormId] = useState(null);
-    
+   
+if (Object.keys(user).length === 0){
+  return<p> {errors}, Please Login or Signup </p>
+}
+
 if(user.learner_posts === undefined){
     return <p>...Loading</p>
     }

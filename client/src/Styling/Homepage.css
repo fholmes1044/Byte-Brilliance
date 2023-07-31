@@ -34,3 +34,8 @@
     margin-top: 10px;
   }
   
+  .first-image-container img {
+    max-height: 400px; 
+    width: 50%;
+    object-fit: cover;
+  }

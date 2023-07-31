@@ -5,10 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   mount ActionCable.server => "/cable"
-  
-    # route to test your configuration
-    get '/hello', to: 'application#hello_world'
-    
+   
     get "/me", to: "users#show"
     post "/signup", to: "users#create"
     post "/login", to: "sessions#create"

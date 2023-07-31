@@ -3,7 +3,7 @@ import { UserContext } from "./context/user";
 import { NavLink, useHistory} from "react-router-dom";
 import "./Styling/NavBar.css"
 
-function NavBar({isLoginPage, isSignupPage}) {
+function NavBar() {
 const {user, logout, loggedIn} = useContext(UserContext)
 const history = useHistory();
 

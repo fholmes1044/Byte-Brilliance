@@ -1,20 +1,20 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, {useState, useContext} from "react";
 import { UserContext } from "./context/user";
 import { useHistory} from "react-router-dom";
-import { GoogleLogin, useGoogleLogin, hasGrantedAnyScopeGoogle, hasGrantedAllScopesGoogle} from '@react-oauth/google';
+import { GoogleLogin, useGoogleLogin} from '@react-oauth/google';
 import "./Styling/LoginForm.css"
 
 function LoginForm (){
     const [userName, setUserName] = useState("")
     const [password, setPassword] = useState("")
-    const [userCredential, setUserCredential] = useState('')
+    
     const {errors, setErrors, login} = useContext(UserContext)
     const history = useHistory()
 
     const responseMessage = (response) => {
         console.log("response", response)
 
-        setUserCredential(response.credential)
+        // setUserCredential(response.credential)
 
         googleLogIn(response);
      
@@ -80,7 +80,7 @@ function LoginForm (){
         <div className="picture-container">
           <img
             src="https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-            alt="Login Image"
+            alt="Login"
           />
         </div>
         <div className="form-container">

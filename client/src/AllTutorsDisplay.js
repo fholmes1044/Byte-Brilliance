@@ -1,22 +1,9 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext} from "react";
 import { UserContext } from "./context/user";
 import TutorDisplayTile from "./TutorDisplayTile";
 
 function AllTutorsDisplay({allTutors}){
   const {loggedIn, errors} = useContext(UserContext)
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true); 
-    if (allTutors.length > 0) {
-      setLoading(false);
-    }
-  }, [allTutors]);
-
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
     
       const tutorListStyle = {
         display: "flex",
@@ -25,7 +12,7 @@ function AllTutorsDisplay({allTutors}){
         justifyContent: "center"
       };
 
-      if (Array.isArray(allTutors) ) {
+      if (loggedIn && Array.isArray(allTutors) && allTutors.length > 0 ) {
         return (
           <>
             <h2>All Tutors</h2>

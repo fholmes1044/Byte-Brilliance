@@ -24,8 +24,9 @@ function App() {
 
 
   return (
+    <UserProvider>
     <div className='App'>
-      <UserProvider>
+      
         
         <BrowserRouter> 
          <NavBar/>
@@ -60,9 +61,9 @@ function App() {
           </Switch>
           
         </BrowserRouter>
-      </UserProvider>
+      
      </div>
-   
+   </UserProvider>
   );
 }
 

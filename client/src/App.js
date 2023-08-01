@@ -26,8 +26,6 @@ function App() {
   return (
     <UserProvider>
     <div className='App'>
-      
-        
         <BrowserRouter> 
          <NavBar/>
           <Switch>
@@ -59,9 +57,7 @@ function App() {
             <AllUserPostsDisplay/>
           </Route>
           </Switch>
-          
         </BrowserRouter>
-      
      </div>
    </UserProvider>
   );

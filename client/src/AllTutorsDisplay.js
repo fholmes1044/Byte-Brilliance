@@ -12,7 +12,7 @@ function AllTutorsDisplay({allTutors}){
         justifyContent: "center"
       };
 
-      if (loggedIn && Array.isArray(allTutors) && allTutors.length > 0 ) {
+      if (loggedIn && allTutors.length > 0 ) {
         return (
           <>
             <h2>All Tutors</h2>

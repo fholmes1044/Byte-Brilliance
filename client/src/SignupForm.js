@@ -42,7 +42,6 @@ function SignupForm (){
           .then(user => {
             if (!user.errors){
               signup(user)
-              console.log(user, "in the then")
               history.push('/')
             }else {
               setUsername("")

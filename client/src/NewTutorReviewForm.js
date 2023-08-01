@@ -8,7 +8,6 @@ function NewTutorReviewForm({tutor, setTutor}){
     const {errors, setErrors, setUser, user} = useContext(UserContext)
 
     const addNewTutorReview = (newReview ) => {
-        console.log("new", newReview )
         setTutor({...tutor, tutor_reviews: [...tutor.tutor_reviews, newReview]})
         setUser({ ...user, tutor_reviews: [...user.tutor_reviews, newReview]});
     }

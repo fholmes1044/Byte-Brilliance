@@ -58,13 +58,6 @@ function SessionReviewForm({meetingId}){
                 <option value="5">5</option>
             
             </select><br/>
-            {/* <label>Rate the session 1-5: </label>
-            <input
-            type="number"
-            id="sessionRating"
-            value={sessionRating}
-            onChange= {(e) => setSessionRating(e.target.value)}
-            /><br/> */}
             <label>Session Notes: </label>
             <input
             type="text"

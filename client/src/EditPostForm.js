@@ -5,8 +5,6 @@ function EditPostForm( {post, setEditFormId, handleDeletePost, summary} ){
     const [updatedSummary, setUpdatedSummary] = useState(summary)
     const {setUser} = useContext(UserContext)
 
-    // console.log(post.id)
-
     const handleUpdatePost = () => {
         const updatedPost = {
             ...post,

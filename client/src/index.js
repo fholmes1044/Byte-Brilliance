@@ -29,16 +29,4 @@ root.render(
   </GoogleOAuthProvider>
 );
 
-// ReactDOM.render(
-//   <GoogleOAuthProvider clientId="825029250438-h983qrk6pdse6hofh9b0j2qu439ninb9.apps.googleusercontent.com">
-//     <React.StrictMode>
-//       <App />
-//     </React.StrictMode>
-//   </GoogleOAuthProvider>,
-//   document.getElementById('root')
-// );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

@@ -14,20 +14,23 @@ function UserProvider({ children }) {
 
     
     useEffect(() => {
-        fetch("/me")
-            .then(res => res.json())
-            .then((data) =>{
-                setUser(data)
-                if(data.errors){
-                    setErrors(data.errors);
-                    setUser({});
-                    setLoggedIn(false);
-                    
-                }else{
-                    setLoggedIn(true)
-                }
-            })
-        }, [])
+        if(loggedIn){
+            fetch("/me")
+                .then(res => res.json())
+                .then((data) =>{
+                    setUser(data)
+                    if(data.errors){
+                        setErrors(data.errors);
+                        setUser({});
+                        setLoggedIn(false);
+                        
+                    }else{
+                        setLoggedIn(true)
+                    }
+                });
+        }
+            
+        }, [loggedIn])
 
     useEffect(() => {
         setErrors([])

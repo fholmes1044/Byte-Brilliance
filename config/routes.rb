@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     get "/tutors", to: "tutors#index"
     get "/tutors/:tutorId", to: "tutors#show"
     
-    post '/auth/google_oauth2/callback', to: "sessions#google_auth"
-    get '/login', to: 'sessions#new'
+    # post '/auth/google_oauth2/callback', to: "sessions#google_auth"
+    # get '/login', to: 'sessions#new'
 
     get '/mylearnerposts', to: "learner_posts#my_posts"
 

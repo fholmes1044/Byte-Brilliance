@@ -1,7 +1,6 @@
 import React, {useState, useContext} from "react";
 import { UserContext } from "./context/user";
 import { useHistory} from "react-router-dom";
-import { GoogleLogin, useGoogleLogin} from '@react-oauth/google';
 import "./Styling/LoginForm.css"
 
 function LoginForm (){
@@ -11,18 +10,6 @@ function LoginForm (){
     
     const {errors, setErrors, login} = useContext(UserContext)
     const history = useHistory()
-
-    const responseMessage = (response) => {
-        console.log("response", response)
-
-        // setUserCredential(response.credential)
-
-        googleLogIn(response);
-     
-    };
-    const errorMessage = (error) => {
-        console.log("error",error);
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -50,33 +37,7 @@ function LoginForm (){
             }
         })
     }
-    const googleLogIn = useGoogleLogin({
-        onSuccess: async (tokenResponse) => {
-          const id_token = tokenResponse.tokenId;
-
-          try {
-            const response = await fetch('/auth/google_oauth2/callback', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-              },
-              body: `idtoken=${id_token}`,
-            });
-      
-            if (response.ok) {
-              console.log('Signed in as: ' + response.responseText);
-            } else {
-              console.log('Login failed', response);
-              console.log(tokenResponse)
-            }
-          } catch (error) {
-            console.error('An error occurred during login:', error);
-          }
-        },
-        flow: 'auth-code',
-      });
-      
-
+    
     return(
       <div className="login-form-container">
         <div className="picture-container">
@@ -106,16 +67,6 @@ function LoginForm (){
                 <input type="submit"/>
             </form>
 
-            <br />
-            <div className="google-login-container">
-            <GoogleLogin
-                clientId="825029250438-h983qrk6pdse6hofh9b0j2qu439ninb9.apps.googleusercontent.com"
-                buttonText="Sign in with Google"
-                onSuccess={responseMessage}
-                onFailure={errorMessage}
-                cookiePolicy="single_host_origin"  
-            />
-            </div>
             <ul>
                 {showErrors && errors}
             </ul>
